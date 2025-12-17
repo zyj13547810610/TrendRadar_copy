@@ -103,13 +103,13 @@ jobs:
       # EN: Generates a random delay between 1 and 300 seconds (5 minutes).
       #     Critical for load balancing.
       #
-      # CN: 生成 1 到 300 秒（5分钟）之间的随机延迟。
+      # CN: 生成 1 到 60 秒（1分钟）之间的随机延迟。
       #     这对负载均衡至关重要。
       - name: Random Delay (Traffic Control)
         if: success()
         run: |
           echo "🎲 Traffic Control: Generating random delay..."
-          DELAY=$(( ( RANDOM % 300 )  + 1 ))
+          DELAY=$(( ( RANDOM % 60 )  + 1 ))
           echo "⏸️  Sleeping for ${DELAY} seconds to spread the load..."
           sleep ${DELAY}s
           echo "▶️  Delay finished. Starting crawler..."
